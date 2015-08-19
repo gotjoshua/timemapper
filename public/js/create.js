@@ -17,7 +17,7 @@ var getGDrivePickerOauth = function(callback) {
   gapi.load('auth', {'callback': onAuthApiLoad});
 
   // The Client ID obtained from the Google Developers Console.
-  var clientId = '1670524553-8saihco706hv7ilehume7g8a2fnj1ug5.apps.googleusercontent.com';
+  var clientId = '181497782405-4s44nsrimrke8ue9knr9fdgqp88tdcj0.apps.googleusercontent.com';
   // Scope to use to access user's photos.
   var scope = ['https://www.googleapis.com/auth/drive.readonly'];
 
@@ -58,7 +58,7 @@ var onGdriveImportClick = function(e) {
 
   function createPicker() {
     // The API developer key obtained from the Google Developers Console.
-    var developerKey = 'AIzaSyBxklz1xd_L-whw-k2vR4pjWkgO6cqfLG0';
+    var developerKey = 'AIzaSyABFU3pGjlMJ_Bq90WOLfQecOK9z34P6fE';
 
     // Create and render a Picker object for picking user Photos.
     var picker = new google.picker.PickerBuilder()
