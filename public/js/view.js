@@ -176,6 +176,7 @@ var TimeMapperView = Backbone.View.extend({
         var record = self.model.records.at(hash);
         if (record && record.marker) {
           record.marker.openPopup();
+		  //JSG - here can be a zoomToExtents map nav also
         }
       }
     });
