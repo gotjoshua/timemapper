@@ -172,11 +172,19 @@ var TimeMapperView = Backbone.View.extend({
     // listen for hashchange to update map
     $(window).on("hashchange", function () {
       var hash = window.location.hash.substring(1);
-      if (parseInt(hash, 10)) {
+      if (parseInt(hash, 10) > -1) {
         var record = self.model.records.at(hash);
-        if (record && record.marker) {
-          record.marker.openPopup();
-		  //JSG - here can be a zoomToExtents map nav also
+        if (record) {
+			if(record.marker){
+				record.marker.openPopup();
+			}
+          	if(record.get('lat') && record.get('long') && record.get('zoom') ){
+				self.map.map.setView([record.get('lat'),record.get('long') ], record.get('zoom'));
+          	} else {
+          		//JSG - auto zoomToExtents map nav 
+          	}
+		  
+		  
         }
       }
     });
@@ -274,10 +282,11 @@ var TimeMapperView = Backbone.View.extend({
       var maxSize = 400;
       var radius = parseInt(Math.sqrt(maxSize * recordAttr.relativeSize));
       if (radius) {
+		var fc = recordAttr.color || '#fe9131';
         var marker = new L.CircleMarker(latlng, {
           radius: radius,
-          fillcolor: '#fe9131',
-          color: '#fe9131',
+          fillcolor: fc,
+          color: fc,
           opacity: recordAttr.opacity,
           fillOpacity: recordAttr.opacity * 0.9
         });
